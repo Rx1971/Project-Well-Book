@@ -50,6 +50,150 @@
     </div>
   </nav>
 
+  <!-- Carousel start -->
+
+  <!-- <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="asset/img/cover600.jpg" alt="Gambar 1">
+            </div>
+            <div class="carousel-item">
+                <img src="asset/img/cokelat.jpeg" alt="Gambar 2">
+            </div>
+            <div class="carousel-item">
+                <img src="asset/img/OIP.jpeg" alt="Gambar 3">
+            </div>
+        </div>
+        
+        <div class="carousel-nav">
+            <button id="prevBtn">&#8249;</button>
+            <button id="nextBtn">&#8250;</button>
+        </div>
+    </div>
+
+    <script>
+        // Menambahkan fitur pengguliran ke carousel
+        let carousel = document.querySelector('.carousel');
+        let carouselInner = carousel.querySelector('.carousel-inner');
+        let carouselItems = carousel.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+        let interval = null;
+        let transitionInProgress = false;
+        
+        function goToSlide(index) {
+            if (transitionInProgress || index < 0 || index >= carouselItems.length) {
+                return;
+            }
+            
+            carouselInner.style.transform = `translateX(-${index * 500}px)`;
+            currentIndex = index;
+            
+            // Menghapus kelas "active" dari semua item dan menambahkannya ke item saat ini
+            carouselItems.forEach((item, idx) => {
+                if (idx === currentIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Memulai timer untuk menggulir otomatis setiap 3 detik
+            clearInterval(interval);
+            interval = setInterval(() => {
+                goToSlide((currentIndex + 1) % carouselItems.length);
+            }, 5000);
+        }
+        
+        // Menggulir ke slide berikutnya saat tombol "Next" diklik
+        document.querySelector('#nextBtn').addEventListener('click', () => {
+            goToSlide((currentIndex + 1) % carouselItems.length);
+        });
+        
+        // Menggulir ke slide sebelumnya saat tombol "Previous" diklik
+        document.querySelector('#prevBtn').addEventListener('click', () => {
+            goToSlide((currentIndex - 1 + carouselItems.length) % carouselItems.length);
+        });
+        
+        // Menginisialisasi carousel
+        goToSlide(0);
+    </script> -->
+
+<!-- carousel end -->
+<div class="container-carousel">
+        <div class="content-slide">
+            <div class="imgslide fade">
+                <div class="numberslide">1 / 3</div>
+                <img src="asset/img/OPI.jpeg" alt="" class="img-carousel">
+                <div class="text">Pemandangan</div>
+            </div>
+
+            <div class="imgslide fade">
+                <div class="numberslide">2 / 3</div>
+                <img src="asset/img/cover600.jpeg" alt="" class="img-carousel">
+                <div class="text">Jembatan</div>
+            </div>
+
+            <div class="imgslide fade">
+                <div class="numberslide">3 / 3</div>
+                <img src="asset/img/cokelat.jpeg" alt="" class="img-carousel">
+                <div class="text">Jerapah</div>
+            </div>
+
+            <a class="prev" onClick="nextslide(-1)">&#10094;</a>
+            <a class="next" onClick="nextslide(1)">&#10095;</a> 
+        </div>
+
+        <div class="page">
+            <span class="dot" onClick="dotslide(1)"></span>
+            <span class="dot" onClick="dotslide(2)"></span>
+            <span class="dot" onClick="dotslide(3)"></span>
+        </div>
+
+    </div>
+
+    <script>
+        var slideIndex = 1;
+            showSlide(slideIndex);
+
+        function nextslide(n){
+            showSlide(slideIndex += n);
+        }
+
+        function dotslide(n){
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            var i;
+            var slides = document.getElementsByClassName("imgslide");
+            var dot = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            for (i = 0; i < slides.length; i++) {
+                
+                slides[i].style.display = "none";
+            }
+
+            for (i = 0; i < slides.length; i++) {
+                
+                dot[i].className = dot[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex - 1].style.display = "block";
+
+            dot[slideIndex - 1].className += " active";
+            
+
+
+        }
+    </script>
+
+
   <!-- header mulai -->
   <div class="card-container">
     <div class="card">
